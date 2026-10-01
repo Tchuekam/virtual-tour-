@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f3f1eb" />
+    <meta name="description" content="Step inside an interactive, 360-degree living-room tour. Look around and discover the details." />
+    <title>Living Room — Inhabit</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <symbol id="icon-house" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v11H3zM9 21v-8h6v8" /></symbol>
+      <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6" /></symbol>
+      <symbol id="icon-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" /></symbol>
+      <symbol id="icon-minus" viewBox="0 0 24 24"><path d="M5 12h14" /></symbol>
+      <symbol id="icon-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6" /></symbol>
+      <symbol id="icon-expand" viewBox="0 0 24 24"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5" /></symbol>
+      <symbol id="icon-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10v1" /></symbol>
+      <symbol id="icon-rotate" viewBox="0 0 24 24"><path d="M20 7a9 9 0 1 0 1 8M20 2v6h-6" /></symbol>
+      <symbol id="icon-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14" /></symbol>
+      <symbol id="icon-focus" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 2v4m0 12v4M2 12h4m12 0h4" /></symbol>
+      <symbol id="icon-sofa" viewBox="0 0 24 24"><path d="M5 12V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v5M5 19v2m14-2v2M3 12a2 2 0 0 1 4 0v2h10v-2a2 2 0 0 1 4 0v7H3z" /></symbol>
+      <symbol id="icon-tv" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M12 17v4m-5 0h10" /></symbol>
+      <symbol id="icon-bar" viewBox="0 0 24 24"><path d="M3 9h18M6 9v12m12-12v12M7 3h10v6M9 15h6" /></symbol>
+      <symbol id="icon-hand" viewBox="0 0 24 24"><path d="M8 12V6a2 2 0 0 1 4 0v5-7a2 2 0 0 1 4 0v7-5a2 2 0 0 1 4 0v9c0 5-3 7-7 7-3 0-5-2-7-5l-3-4a2 2 0 0 1 3-2l2 2" /></symbol>
+      <symbol id="icon-eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></symbol>
+    </svg>
+
+    <div class="tour-shell">
+      <aside class="sidebar" aria-label="Tour navigation">
+        <a class="brand" href="/" aria-label="Inhabit tour home"><span class="brand-mark"><svg><use href="#icon-house"/></svg></span>inhabit<span class="brand-dot">.</span></a>
+        <div class="sidebar-intro"><p class="eyebrow">A VIRTUAL OPEN DOOR</p><h1>A little closer<br />to being here.</h1><p>Step inside. Take your time.<br />See the space from a new perspective.</p></div>
+        <section class="spaces" aria-labelledby="space-heading">
+          <div class="section-heading"><h2 id="space-heading">YOUR SPACE</h2><span>01</span></div>
+          <button class="scene-card" id="scene-home" aria-label="Return to the living room starting view" aria-current="true">
+            <div class="scene-image"><img src="/images/living-room.webp" alt="A panoramic preview of the warm-toned living room"/><span class="panorama-badge">360°</span><span class="scene-check"><svg><use href="#icon-eye"/></svg></span></div>
+            <div class="scene-caption"><div><strong>Living room</strong><span><i></i> You're here</span></div><svg class="icon"><use href="#icon-arrow"/></svg></div>
+          </button>
+        </section>
+        <section class="highlights" aria-labelledby="highlights-heading">
+          <div class="section-heading"><h2 id="highlights-heading">A CLOSER LOOK</h2><span>03 details</span></div>
+          <button class="detail-link" data-detail="lounge"><span class="detail-icon"><svg class="icon"><use href="#icon-sofa"/></svg></span><span>The lounge</span><svg class="small-arrow"><use href="#icon-arrow"/></svg></button>
+          <button class="detail-link" data-detail="media"><span class="detail-icon"><svg class="icon"><use href="#icon-tv"/></svg></span><span>Media wall</span><svg class="small-arrow"><use href="#icon-arrow"/></svg></button>
+          <button class="detail-link" data-detail="bar"><span class="detail-icon"><svg class="icon"><use href="#icon-bar"/></svg></span><span>Breakfast bar</span><svg class="small-arrow"><use href="#icon-arrow"/></svg></button>
+        </section>
+        <div class="sidebar-footer"><span class="footer-line"></span><p>One space. Every angle.</p><button id="about-tour"><svg class="icon"><use href="#icon-info"/></svg> About this tour</button></div>
+      </aside>
+
+      <main class="viewer-shell" id="viewer-shell" aria-label="Interactive living-room tour">
+        <div id="panorama" role="region" aria-label="360-degree living room. Drag or use arrow keys to look around; plus and minus to zoom; Home to reset." tabindex="0"></div>
+        <div class="viewer-shade" aria-hidden="true"></div>
+        <div class="loading-screen" id="loading-screen" role="status"><span class="loader"></span><span>Opening the door…</span></div>
+        <div class="viewer-topbar">
+          <div class="location"><span class="location-index">01</span><div><p class="eyebrow">EXPLORE THE SPACE</p><h2>Living room</h2></div></div>
+          <div class="top-actions"><span class="view-badge"><i></i> 360° VIEW</span><button class="glass-button" id="help" aria-label="How to explore" title="How to explore"><svg class="icon"><use href="#icon-info"/></svg></button><button class="glass-button" id="fullscreen" aria-label="Enter fullscreen" title="Enter fullscreen"><svg class="icon"><use href="#icon-expand"/></svg></button></div>
+        </div>
+        <section class="detail-panel" id="detail-panel" aria-labelledby="detail-title" hidden>
+          <div class="detail-panel-header"><span class="eyebrow">IN THE DETAILS</span><button class="plain-button" id="close-detail" aria-label="Close room detail"><svg class="icon"><use href="#icon-close"/></svg></button></div>
+          <span class="detail-panel-icon"><svg class="icon"><use id="detail-symbol" href="#icon-sofa"/></svg></span><h3 id="detail-title"></h3><p id="detail-description"></p><span class="detail-note">A detail within this panoramic view</span>
+        </section>
+        <div class="welcome-note" id="welcome-note"><div class="welcome-icon"><svg class="icon"><use href="#icon-hand"/></svg></div><div><h3>Make yourself at home.</h3><p>Drag to look around. Click a <span class="inline-plus">+</span> to discover more.</p></div><button class="plain-button" id="dismiss-welcome" aria-label="Dismiss exploration tip"><svg class="icon"><use href="#icon-close"/></svg></button></div>
+        <div class="viewer-bottom">
+          <div class="view-label"><span class="view-label-line"></span><span>LOOK AROUND.<br /><strong>STAY A WHILE.</strong></span></div>
+          <div class="viewer-controls" role="toolbar" aria-label="Panorama controls">
+            <button id="zoom-out" aria-label="Zoom out" title="Zoom out (−)"><svg class="icon"><use href="#icon-minus"/></svg></button><span class="zoom-readout" id="zoom-readout" aria-label="Zoom level">1.0×</span><button id="zoom-in" aria-label="Zoom in" title="Zoom in (+)"><svg class="icon"><use href="#icon-plus"/></svg></button><span class="control-divider"></span><button id="reset-view" aria-label="Reset view" title="Reset view (Home)"><svg class="icon"><use href="#icon-focus"/></svg></button><span class="control-divider"></span><button class="rotate-control" id="auto-rotate" aria-label="Start automatic rotation" aria-pressed="false" title="Start automatic rotation"><svg class="icon"><use id="rotate-symbol" href="#icon-rotate"/></svg><span>Auto rotate</span></button>
+          </div>
+          <div class="orientation" aria-label="Viewing direction"><span id="direction">000°</span><div class="orientation-ring"><svg id="direction-needle" viewBox="0 0 32 32" aria-hidden="true"><path d="m16 4 6 22-6-5-6 5Z"/></svg></div></div>
+        </div>
+        <span class="viewer-footnote">SINGLE-SCENE PANORAMA</span>
+        <div class="sr-only" id="tour-status" role="status" aria-live="polite"></div>
+        <dialog id="help-dialog" aria-labelledby="help-title"><div class="dialog-top"><span class="eyebrow">WELCOME INSIDE</span><button class="plain-button" id="close-help" aria-label="Close tour information"><svg class="icon"><use href="#icon-close"/></svg></button></div><h2 id="help-title">Go ahead. Look around.</h2><p>Explore the living room from one fixed viewpoint, using your supplied panoramic image.</p><ul><li><strong>Look around</strong><span>Drag with your mouse or swipe on a touch screen.</span></li><li><strong>Get closer</strong><span>Scroll, pinch, or use the + and − controls.</span></li><li><strong>Discover details</strong><span>Select a + marker or a detail in the sidebar.</span></li><li><strong>Use your keyboard</strong><span>Focus the panorama, then use arrow keys, + / −, or Home to reset. Escape closes a detail.</span></li></ul><div class="source-note">This is a single 1920 × 960 panorama, not a walk-through or 3D model. Additional room panoramas are needed to move between spaces. Viewing direction is relative to the starting view, not geographic north.</div><button id="start-exploring" class="primary-button">Let's explore <svg class="icon"><use href="#icon-arrow"/></svg></button></dialog>
+      </main>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
